@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "586585968419",
+    "project_id": "shopify1-2f53a",
+    "storage_bucket": "shopify1-2f53a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586585968419:android:e0747d71c3a846e54b4696",
+        "android_client_info": {
+          "package_name": "com.example.shopify1_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586585968419-j3q04cedf0p4oq2hollk9ipjb9ahj2ta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_okhw7tezhLKt-UMKucIFkLka3P1E3wE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586585968419-j3q04cedf0p4oq2hollk9ipjb9ahj2ta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
