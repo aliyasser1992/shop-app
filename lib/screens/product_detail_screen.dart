@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopify1_app/providers/product.dart';
+
 import '../providers/products.dart';
-import '../providers/product.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   static const routName = '/product_detail';

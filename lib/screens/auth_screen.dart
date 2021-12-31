@@ -6,6 +6,8 @@ import 'package:shopify1_app/providers/auth.dart';
 class AuthScreen extends StatelessWidget {
   static const routName = '/auth';
 
+  const AuthScreen({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
@@ -39,7 +41,7 @@ class AuthScreen extends StatelessWidget {
                   ),
                   Flexible(
                     flex: deviceSize.width > 600 ? 2 : 1,
-                    child: AuthCard(),
+                    child: const AuthCard(),
                   )
                 ],
               ),
@@ -52,6 +54,8 @@ class AuthScreen extends StatelessWidget {
 }
 
 class AuthCard extends StatefulWidget {
+  const AuthCard({Key key}) : super(key: key);
+
   @override
   _AuthCardState createState() => _AuthCardState();
 }
@@ -222,9 +226,7 @@ class _AuthCardState extends State<AuthCard>
                 ),
                 AnimatedContainer(
                   constraints: BoxConstraints(
-                    // ignore: unrelated_type_equality_checks
                     minHeight: _authMode == AuthMode.signUp ? 60 : 0,
-                    // ignore: unrelated_type_equality_checks
                     maxHeight: _authMode == AuthMode.signUp ? 120 : 0,
                   ),
                   duration: const Duration(milliseconds: 300),

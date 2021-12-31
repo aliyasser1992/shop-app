@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:shopify1_app/providers/cart.dart';
 import 'package:http/http.dart' as http;
 
-import 'product.dart';
-
 class OrderItem {
   final String id;
   final double amount;

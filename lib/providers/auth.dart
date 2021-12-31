@@ -8,7 +8,7 @@ import 'package:shopify1_app/models/http_exeptions.dart';
 
 class Auth extends ChangeNotifier {
   String _token;
-  // DateTime _expiryDate;
+  //DateTime _expiryDate;
   String _userId;
   Timer _authTimer;
 
@@ -19,12 +19,12 @@ class Auth extends ChangeNotifier {
   }
 
   String get token {
-    //if (_expiryDate != null &&
-    //   _expiryDate.isAfter(DateTime.now()) &&
-    //   token != null) {
-    return _token;
-    // }
-    //return null;
+    if ( //_expiryDate != null &&
+        //_expiryDate.isAfter(DateTime.now()) &&
+        token != null) {
+      return _token;
+    }
+    return null;
   }
 
   String get userId {
@@ -49,19 +49,19 @@ class Auth extends ChangeNotifier {
       }
       _token = resData['idToken'];
       _userId = resData['localId'];
-      // _expiryDate = DateTime.now()
+      //_expiryDate = DateTime.now()
       // .add(Duration(seconds: int.parse(resData['expirseIn'])));
-      // _autoLogOut();
+      _autoLogOut();
       notifyListeners();
       final prefs = await SharedPreferences.getInstance();
       String userData = json.encode({
         'token': _token,
         'userId': _userId,
-        //  'expiryDate': _expiryDate.toIso8601String()
+        //'expiryDate': _expiryDate?.toIso8601String()
       });
       prefs.setString('userData', userData);
     } catch (e) {
-      throw (e);
+      rethrow;
     }
   }
 
@@ -80,21 +80,22 @@ class Auth extends ChangeNotifier {
     final extractedData =
         json.decode(prefs.getString('userData')) as Map<String, Object>;
 
-    // final exppiryDate = DateTime.parse(extractedData['expiryDate']);
-    //if (exppiryDate.isBefore(DateTime.now())) return false;
+    final exppiryDate = DateTime.parse(extractedData['expiryDate']);
+    if (exppiryDate.isBefore(DateTime.now())) return false;
 
     _token = extractedData['token'];
     _userId = extractedData['userId'];
     //_expiryDate = exppiryDate;
     notifyListeners();
-    // _autoLogOut();
+    _autoLogOut();
     return true;
   }
 
+  // ignore: missing_return
   Future<bool> logOut() async {
     _token = null;
     _userId = null;
-    //_expiryDate = null;
+    // _expiryDate = null;
     if (_authTimer != null) {
       _authTimer.cancel();
       _authTimer = null;
@@ -106,11 +107,11 @@ class Auth extends ChangeNotifier {
     prefs.clear();
   }
 
-  //void _autoLogOut() {
-  //if (_authTimer != null) {
-  //   _authTimer.cancel();
-  // }
-  //final timeToExpiry = _expiryDate.difference(DateTime.now()).inSeconds;
-  // _authTimer = Timer(Duration(seconds: timeToExpiry), logOut);
-  //}
+  void _autoLogOut() {
+    if (_authTimer != null) {
+      _authTimer.cancel();
+    }
+    // final timeToExpiry = _expiryDate.difference(DateTime.now()).inSeconds;
+    // _authTimer = Timer(Duration(seconds: timeToExpiry), logOut);
+  }
 }

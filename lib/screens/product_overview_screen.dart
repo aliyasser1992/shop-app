@@ -60,10 +60,13 @@ class _ProductOverViewScreenState extends State<ProductOverViewScreen> {
                   onPressed: () =>
                       Navigator.of(context).pushNamed(CartScreen.routName),
                   icon: const Icon(Icons.shopping_cart_outlined)),
-              builder: (_, cart, ch) => Badge(
-                    child: ch,
-                    value: cart.itemCount.toString(),
-                  ))
+              builder: (_, cart, ch) {
+                return Badge(
+                  child: ch,
+                  value: cart.itemCount.toString(),
+                  color: Colors.grey,
+                );
+              })
         ],
       ),
       body: _isLoading

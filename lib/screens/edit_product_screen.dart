@@ -252,7 +252,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                                 focusNode: _imgUrlFocusNode,
                                 validator: (value) {
                                   if (value.isEmpty) {
-                                    return 'pls enter an image url ';
+                                    return 'pls enter an image url';
                                   }
                                   if (!value.startsWith('http') &&
                                       !value.startsWith('https')) {
